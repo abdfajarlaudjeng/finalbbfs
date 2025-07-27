@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Sistem</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #f9fafb;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+    <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
+    <div>
+      <label class="block mb-2">Username</label>
+      <input type="text" id="username" class="w-full border px-3 py-2 rounded mb-4" placeholder="Masukkan username">
+      
+      <label class="block mb-2">Password</label>
+      <input type="password" id="password" class="w-full border px-3 py-2 rounded mb-4" placeholder="Masukkan password">
+      
+      <button onclick="login()" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700">Masuk</button>
+    </div>
+    <p id="errorMsg" class="text-red-600 mt-3 text-sm hidden text-center"></p>
+  </div>
+
+  <script>
+    const validUser = "admin";
+    const validPass = "12345";
+
+    function login() {
+      const u = document.getElementById("username").value;
+      const p = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (u === validUser && p === validPass) {
+        // Simpan sesi login (opsional)
+        localStorage.setItem("loggedIn", "true");
+        // Redirect ke halaman dashboard.html
+        window.location.href = "dashboard.html";
+      } else {
+        errorMsg.textContent = "Username atau password salah!";
+        errorMsg.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>
